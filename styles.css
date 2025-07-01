@@ -1,0 +1,143 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #000000;
+  background-image: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #000000 100%);
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  color: #ffffff;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 240px;
+  background: rgba(20, 20, 20, 0.2);
+  backdrop-filter: blur(20px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 8px;
+  padding: 40px 20px;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar button {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+  font-weight: normal;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+
+.sidebar button .number {
+  background: transparent;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  opacity: 0.5;
+}
+
+.sidebar button .title {
+  flex: 1;
+  text-align: left;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar button.active {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+/* Card container */
+.card-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 40px;
+  height: 100vh;
+  perspective: 2000px;
+}
+
+.card {
+  width: 800px;
+  min-height: 500px;
+  padding: 60px;
+  border-radius: 30px;
+  background: linear-gradient(135deg, rgba(30, 30, 30, 0.9), rgba(15, 15, 15, 0.95));
+  color: white;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  opacity: 0.1;
+  position: absolute;
+  transform: translateY(120vh) scale(0.7) rotateX(45deg);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card.active {
+  opacity: 1;
+  transform: translateY(0) scale(1) rotateX(0);
+  transition-delay: 0.1s;
+  z-index: 3;
+}
+
+.card.prev {
+  opacity: 0.3;
+  transform: translateY(-40vh) scale(0.9) rotateX(15deg);
+  z-index: 2;
+}
+
+.card.next {
+  opacity: 0.3;
+  transform: translateY(40vh) scale(0.9) rotateX(-15deg);
+  z-index: 1;
+}
+
+.card h2 {
+  margin: 15px 0;
+  font-size: 32px;
+}
+
+.card p {
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 30px;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.card button {
+  background: #00ff99;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.card button:hover {
+  transform: scale(1.05);
+}
