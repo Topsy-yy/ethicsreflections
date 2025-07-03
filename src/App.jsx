@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Sidebar from './components/Sidebar';
 import PlanetCard from './components/PlanetCard';
-import { planetsData } from './data/planets';
+import { reflectionTopics } from './data/planets';
 import './App.css';
 
 const App = () => {
@@ -10,18 +10,18 @@ const App = () => {
 
   const getCardPosition = useCallback((index) => {
     if (index === currentIndex) return 'active';
-    if (index === currentIndex - 1 || (currentIndex === 0 && index === planetsData.length - 1)) {
+    if (index === currentIndex - 1 || (currentIndex === 0 && index === reflectionTopics.length - 1)) {
       return 'prev';
     }
-    if (index === currentIndex + 1 || (currentIndex === planetsData.length - 1 && index === 0)) {
+    if (index === currentIndex + 1 || (currentIndex === reflectionTopics.length - 1 && index === 0)) {
       return 'next';
     }
     return '';
   }, [currentIndex]);
 
   const showCard = useCallback((index) => {
-    if (index < 0) index = planetsData.length - 1;
-    if (index >= planetsData.length) index = 0;
+    if (index < 0) index = reflectionTopics.length - 1;
+    if (index >= reflectionTopics.length) index = 0;
     setCurrentIndex(index);
   }, []);
 
@@ -67,20 +67,21 @@ const App = () => {
       <div className="grid-background"></div>
       
       <div className="header">
-        <h1>SOLAR EXPLORER</h1>
+        <h1>ETHICS REFLECTIONS</h1>
+        <p className="subtitle">Exploring Moral Philosophy Through Personal Reflection</p>
       </div>
 
       <Sidebar 
-        planets={planetsData}
+        planets={reflectionTopics}
         currentIndex={currentIndex}
         onPlanetSelect={handlePlanetSelect}
       />
 
       <div className="card-container">
-        {planetsData.map((planet, index) => (
+        {reflectionTopics.map((topic, index) => (
           <PlanetCard
-            key={planet.name}
-            planet={planet}
+            key={topic.name}
+            planet={topic}
             position={getCardPosition(index)}
           />
         ))}

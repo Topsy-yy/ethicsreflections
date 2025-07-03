@@ -1,26 +1,43 @@
 import React from 'react';
 
 const PlanetCard = ({ planet, position }) => {
-  const handleExplore = () => {
-    alert(`Exploring ${planet.name}...`);
+  const handleReflect = () => {
+    // TODO: Open reflection editor
+    alert(`Opening reflection editor for ${planet.title}...`);
   };
 
   return (
     <div className={`card ${position}`}>
-      <div className="planet-visual">
+      <div className="topic-visual">
         <div 
-          className="planet-sphere" 
+          className="topic-icon-container" 
           style={{ 
-            background: `radial-gradient(circle at 30% 30%, ${planet.color}aa, ${planet.color}22)` 
+            background: `linear-gradient(135deg, ${planet.color}22, ${planet.color}44)`,
+            borderColor: planet.color
           }}
         >
-          <span className="planet-icon-large">{planet.icon}</span>
+          <span className="topic-icon-large">{planet.icon}</span>
+          <div className="glow-effect" style={{ backgroundColor: planet.color }}></div>
         </div>
       </div>
-      <h2>{planet.name}</h2>
-      <p className="planet-description">{planet.text}</p>
-      <p className="planet-details">{planet.description}</p>
-      <button onClick={handleExplore}>EXPLORE</button>
+      
+      <div className="card-content">
+        <div className="unit-label">{planet.name}</div>
+        <h2>{planet.title}</h2>
+        <p className="topic-description">{planet.text}</p>
+        <p className="topic-details">{planet.description}</p>
+        
+        <div className="action-buttons">
+          <button className="reflect-btn" onClick={handleReflect}>
+            <span className="btn-icon">✍️</span>
+            WRITE REFLECTION
+          </button>
+          <button className="view-btn">
+            <span className="btn-icon">👁️</span>
+            VIEW NOTES
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

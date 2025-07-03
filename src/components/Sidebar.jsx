@@ -3,17 +3,28 @@ import React from 'react';
 const Sidebar = ({ planets, currentIndex, onPlanetSelect }) => {
   return (
     <div className="sidebar">
-      {planets.map((planet, index) => (
+      <div className="sidebar-header">
+        <h3>Course Units</h3>
+        <div className="progress-indicator">
+          <span>{currentIndex + 1}</span>/<span>{planets.length}</span>
+        </div>
+      </div>
+      
+      {planets.map((topic, index) => (
         <button
-          key={planet.name}
-          className={index === currentIndex ? 'active' : ''}
+          key={topic.name}
+          className={`unit-button ${index === currentIndex ? 'active' : ''}`}
           onClick={() => onPlanetSelect(index)}
         >
           <span 
-            className="planet-dot" 
-            style={{ backgroundColor: planet.color }}
+            className="unit-dot" 
+            style={{ backgroundColor: topic.color }}
           ></span>
-          <span className="title">{planet.name}</span>
+          <div className="unit-info">
+            <span className="unit-number">{topic.name}</span>
+            <span className="unit-title">{topic.title}</span>
+          </div>
+          <span className="unit-icon">{topic.icon}</span>
         </button>
       ))}
     </div>

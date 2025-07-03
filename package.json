@@ -1,10 +1,11 @@
 {
-  "name": "solar-explorer",
+  "name": "ethics-reflections",
   "version": "1.0.0",
-  "description": "A React-based Solar Explorer interface",
+  "description": "A React-based Ethics Reflections platform for academic course units",
   "main": "index.js",
   "scripts": {
     "start": "vite",
+    "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },

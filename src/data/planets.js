@@ -1,44 +1,56 @@
-export const planetsData = [
+export const reflectionTopics = [
   { 
-    name: "MERCURY", 
-    text: "The smallest planet in our solar system and the nearest to the Sun, Mercury is only slightly larger than Earth's Moon.",
-    description: "Mercury has no atmosphere to retain heat, so temperatures vary dramatically from 427°C during the day to -173°C at night.",
-    icon: "☿",
-    color: "#8C7853"
+    name: "UNIT 1",
+    title: "Introduction to Ethics",
+    text: "Exploring fundamental ethical theories and their applications in modern contexts.",
+    description: "This unit introduces key ethical frameworks including deontology, consequentialism, and virtue ethics. Reflect on how these theories apply to real-world scenarios.",
+    icon: "Ⅰ",
+    color: "#6366f1",
+    reflection: "Click to write your reflection on this unit..."
   },
   { 
-    name: "VENUS", 
-    text: "Venus is the second planet from the Sun and the hottest planet in our solar system with surface temperatures over 460°C.",
-    description: "Often called Earth's twin due to similar size, Venus has a thick, toxic atmosphere that traps heat in a runaway greenhouse effect.",
-    icon: "♀",
-    color: "#FFC649"
+    name: "UNIT 2",
+    title: "Professional Ethics",
+    text: "Examining ethical responsibilities and dilemmas in professional environments.",
+    description: "Focus on professional codes of conduct, workplace integrity, and ethical decision-making in various career contexts.",
+    icon: "Ⅱ",
+    color: "#8b5cf6",
+    reflection: "Click to write your reflection on this unit..."
   },
   { 
-    name: "EARTH", 
-    text: "Our home planet is the only known place in the universe where life exists. Earth has liquid water, a breathable atmosphere, and a magnetic field.",
-    description: "Earth is the third planet from the Sun and the fifth largest planet in our solar system. It's the only planet known to support life.",
-    icon: "🌍",
-    color: "#4F94CD"
+    name: "UNIT 3",
+    title: "Technology & Society",
+    text: "Analyzing the ethical implications of technological advancement on society.",
+    description: "Explore privacy, AI ethics, digital rights, and the responsibility of technologists in shaping our digital future.",
+    icon: "Ⅲ",
+    color: "#06b6d4",
+    reflection: "Click to write your reflection on this unit..."
   },
   { 
-    name: "MARS", 
-    text: "Mars is the fourth planet from the Sun and is known as the Red Planet due to iron oxide (rust) on its surface.",
-    description: "Mars has the largest volcano in the solar system, Olympus Mons, and evidence suggests it once had liquid water on its surface.",
-    icon: "♂",
-    color: "#CD5C5C"
+    name: "UNIT 4",
+    title: "Environmental Ethics",
+    text: "Understanding our moral obligations towards the environment and future generations.",
+    description: "Examine sustainability, climate change ethics, and our responsibility as stewards of the planet.",
+    icon: "Ⅳ",
+    color: "#10b981",
+    reflection: "Click to write your reflection on this unit..."
   },
   { 
-    name: "JUPITER", 
-    text: "Jupiter is the largest planet in our solar system. It's a gas giant with a Great Red Spot that's been raging for hundreds of years.",
-    description: "Jupiter has 79 known moons, including the four largest: Io, Europa, Ganymede, and Callisto, discovered by Galileo.",
-    icon: "♃",
-    color: "#DAA520"
+    name: "UNIT 5",
+    title: "Global Ethics",
+    text: "Exploring ethical challenges in our interconnected global society.",
+    description: "Discuss human rights, cultural relativism, global justice, and ethical responsibilities across borders.",
+    icon: "Ⅴ",
+    color: "#f59e0b",
+    reflection: "Click to write your reflection on this unit..."
   },
   { 
-    name: "SATURN", 
-    text: "Saturn is best known for its prominent ring system, though all gas giants have rings. It's the second-largest planet in our solar system.",
-    description: "Saturn is less dense than water and has 82 known moons, including Titan, which has a thick atmosphere and liquid methane lakes.",
-    icon: "♄",
-    color: "#FAD5A5"
+    name: "UNIT 6",
+    title: "Future Challenges",
+    text: "Anticipating and preparing for emerging ethical dilemmas of tomorrow.",
+    description: "Consider bioethics, space exploration ethics, and other frontier challenges that will shape future moral landscapes.",
+    icon: "Ⅵ",
+    color: "#ef4444",
+    reflection: "Click to write your reflection on this unit..."
   }
 ];
