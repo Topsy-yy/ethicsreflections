@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Sidebar from './components/Sidebar';
 import PlanetCard from './components/PlanetCard';
+import ReflectionsPage from './components/ReflectionsPage';
 import { reflectionTopics } from './data/planets';
 import './App.css';
 
@@ -9,6 +10,7 @@ const App = () => {
   const [isScrolling, setIsScrolling] = useState(false);
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
+  const [currentView, setCurrentView] = useState('units'); // 'units' or 'reflections'
 
   const getCardPosition = useCallback((index) => {
     if (index === currentIndex) return 'active';
@@ -30,6 +32,14 @@ const App = () => {
   const handlePlanetSelect = useCallback((index) => {
     showCard(index);
   }, [showCard]);
+
+  const handleViewReflections = useCallback(() => {
+    setCurrentView('reflections');
+  }, []);
+
+  const handleBackToUnits = useCallback(() => {
+    setCurrentView('units');
+  }, []);
 
   useEffect(() => {
     const handleWheel = (e) => {
@@ -93,32 +103,39 @@ const App = () => {
 
   return (
     <div className="app">
-      <div className="grid-background"></div>
-      
-      <div className="header">
-        <h1>ETHICS REFLECTIONS</h1>
-        <p className="subtitle">Exploring Moral Philosophy Through Personal Reflection</p>
-      </div>
+      {currentView === 'reflections' ? (
+        <ReflectionsPage onBack={handleBackToUnits} />
+      ) : (
+        <>
+          <div className="grid-background"></div>
+          
+          <div className="header">
+            <h1>ETHICS REFLECTIONS</h1>
+            <p className="subtitle">Exploring Moral Philosophy Through Personal Reflection</p>
+          </div>
 
-      <Sidebar 
-        planets={reflectionTopics}
-        currentIndex={currentIndex}
-        onPlanetSelect={handlePlanetSelect}
-      />
-
-      <div className="card-container"
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-      >
-        {reflectionTopics.map((topic, index) => (
-          <PlanetCard
-            key={topic.name}
-            planet={topic}
-            position={getCardPosition(index)}
+          <Sidebar 
+            planets={reflectionTopics}
+            currentIndex={currentIndex}
+            onPlanetSelect={handlePlanetSelect}
           />
-        ))}
-      </div>
+
+          <div className="card-container"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
+            {reflectionTopics.map((topic, index) => (
+              <PlanetCard
+                key={topic.name}
+                planet={topic}
+                position={getCardPosition(index)}
+                onViewReflections={handleViewReflections}
+              />
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 };
