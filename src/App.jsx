@@ -11,6 +11,7 @@ const App = () => {
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
   const [currentView, setCurrentView] = useState('units'); // 'units' or 'reflections'
+  const [selectedUnitForReflection, setSelectedUnitForReflection] = useState(null);
 
   const getCardPosition = useCallback((index) => {
     if (index === currentIndex) return 'active';
@@ -33,12 +34,14 @@ const App = () => {
     showCard(index);
   }, [showCard]);
 
-  const handleViewReflections = useCallback(() => {
+  const handleViewReflections = useCallback((unitIndex) => {
+    setSelectedUnitForReflection(unitIndex);
     setCurrentView('reflections');
   }, []);
 
   const handleBackToUnits = useCallback(() => {
     setCurrentView('units');
+    setSelectedUnitForReflection(null);
   }, []);
 
   useEffect(() => {
@@ -104,7 +107,10 @@ const App = () => {
   return (
     <div className="app">
       {currentView === 'reflections' ? (
-        <ReflectionsPage onBack={handleBackToUnits} />
+        <ReflectionsPage 
+          onBack={handleBackToUnits} 
+          selectedUnitIndex={selectedUnitForReflection}
+        />
       ) : (
         <>
           <div className="grid-background"></div>
@@ -129,6 +135,7 @@ const App = () => {
               <PlanetCard
                 key={topic.name}
                 planet={topic}
+                index={index}
                 position={getCardPosition(index)}
                 onViewReflections={handleViewReflections}
               />

@@ -1,9 +1,9 @@
 import React from 'react';
 
-const PlanetCard = ({ planet, position, onViewReflections }) => {
+const PlanetCard = ({ planet, index, position, onViewReflections }) => {
   const handleViewReflections = () => {
     if (onViewReflections) {
-      onViewReflections();
+      onViewReflections(index);
     } else {
       // Fallback for development
       alert(`Viewing reflections for ${planet.title}...`);

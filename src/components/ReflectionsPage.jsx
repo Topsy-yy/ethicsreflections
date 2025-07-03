@@ -1,8 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { reflectionTopics } from '../data/planets';
 
-const ReflectionsPage = ({ onBack }) => {
+const ReflectionsPage = ({ onBack, selectedUnitIndex }) => {
   const [selectedUnit, setSelectedUnit] = useState(null);
+
+  // If selectedUnitIndex is provided, show that unit's reflection directly
+  useEffect(() => {
+    if (selectedUnitIndex !== null && selectedUnitIndex !== undefined) {
+      const unitReflection = reflections[selectedUnitIndex];
+      if (unitReflection) {
+        setSelectedUnit(unitReflection);
+      }
+    }
+  }, [selectedUnitIndex]);
 
   // Sample reflection data with Lorem ipsum content - using actual unit data
   const getReflectionContent = (index) => {
@@ -35,69 +45,71 @@ const ReflectionsPage = ({ onBack }) => {
   };
 
   const handleBackToList = () => {
-    setSelectedUnit(null);
-  };
-
-  const handleWriteNow = (unit) => {
-    // For now, we'll just show an alert. In a real app, this would open an editor
-    alert(`Starting reflection for ${unit.title}...\n\nIn a full implementation, this would open a text editor where you could write your reflection on: ${unit.description}`);
+    // If we came directly from a unit (selectedUnitIndex exists), go back to units
+    if (selectedUnitIndex !== null && selectedUnitIndex !== undefined) {
+      onBack();
+    } else {
+      setSelectedUnit(null);
+    }
   };
 
   if (selectedUnit) {
+    // Determine background image based on unit
+    const getBackgroundImage = () => {
+      if (selectedUnit.unitId === 1) {
+        return '/images/Textured.jpeg';
+      }
+      // Default background for other units
+      return 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80&w=2070&auto=format&fit=crop';
+    };
+
+    const backgroundStyle = {
+      backgroundImage: `linear-gradient(135deg, 
+        rgba(10, 15, 25, 0.3) 0%,
+        rgba(15, 20, 30, 0.25) 50%,
+        rgba(20, 25, 35, 0.2) 100%
+      ), url('${getBackgroundImage()}')`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center'
+    };
+
     return (
-      <div className="reflections-page reflection-detail-view">
-        <div className="reflection-background">
-          <div className="reflection-overlay"></div>
-        </div>
+      <div className="winter-card-view" style={backgroundStyle}>
+        <div className="winter-background"></div>
         
-        <div className="reflection-header-minimal">
-          <button className="back-button-minimal" onClick={handleBackToList}>
-            <span className="back-icon">←</span>
-            Back
+        <div className="winter-header">
+          <button className="winter-back-btn" onClick={handleBackToList}>
+            <span>←</span> Back
           </button>
-          <button className="home-button-minimal" onClick={onBack}>
-            <span className="home-icon">⌂</span>
-            Home
+          <button className="winter-home-btn" onClick={onBack}>
+            <span>⌂</span> Home
           </button>
         </div>
 
-        <div className="reflection-card-large">
-          <div className="reflection-card-header-detail">
-            <div className="unit-badge-detail" style={{ backgroundColor: selectedUnit.color }}>
-              <span className="unit-icon-detail">{selectedUnit.icon}</span>
+        <div className="winter-card">
+          <div className="winter-card-header">
+            <div className="winter-unit-badge" style={{ backgroundColor: selectedUnit.color }}>
+              <span className="winter-unit-icon">{selectedUnit.icon}</span>
             </div>
-            <div className="reflection-title-section">
-              <h1 className="reflection-title-large">{selectedUnit.title}</h1>
-              <p className="unit-name-detail">{selectedUnit.unitName}</p>
-              <p className="reflection-description">{selectedUnit.description}</p>
-            </div>
-          </div>
-
-          <div className="reflection-meta-bar">
-            <span className="word-count-detail">{selectedUnit.wordCount} words</span>
-            <span className="separator">•</span>
-            <span className="last-modified-detail">Last modified: {selectedUnit.lastModified}</span>
-          </div>
-
-          <div className="reflection-content-scrollable">
-            <div className="reflection-text">
-              {selectedUnit.content.split('\n\n').map((paragraph, index) => (
-                <p key={index} className="reflection-paragraph-large">
-                  {paragraph}
-                </p>
-              ))}
+            <div className="winter-title-section">
+              <h1 className="winter-title">{selectedUnit.title}</h1>
+              <p className="winter-unit-name">{selectedUnit.unitName}</p>
+              <p className="winter-description">{selectedUnit.description}</p>
             </div>
           </div>
 
-          <div className="reflection-actions-minimal">
-            <button className="action-button edit-button-minimal">
-              <span className="btn-icon">✏️</span>
-              Edit
-            </button>
-            <button className="action-button export-button-minimal">
-              <span className="btn-icon">↗</span>
-              Export
-            </button>
+          <div className="winter-meta">
+            <span>{selectedUnit.wordCount} words</span>
+            <span>•</span>
+            <span>Last modified: {selectedUnit.lastModified}</span>
+          </div>
+
+          <div className="winter-content">
+            {selectedUnit.content.split('\n\n').map((paragraph, index) => (
+              <p key={index} className="winter-paragraph">
+                {paragraph}
+              </p>
+            ))}
           </div>
         </div>
       </div>
@@ -113,7 +125,7 @@ const ReflectionsPage = ({ onBack }) => {
         </button>
         <h1 className="page-title">My Reflections</h1>
         <div className="reflections-summary">
-          <span className="total-reflections">{reflections.filter(r => r.hasReflection).length} of {reflections.length} reflections written</span>
+          <span className="total-reflections">{reflections.filter(r => r.hasReflection).length} of {reflections.length} reflections available</span>
         </div>
       </div>
 
@@ -157,18 +169,8 @@ const ReflectionsPage = ({ onBack }) => {
                   <span className="unit-icon-small">{reflection.icon}</span>
                 </div>
                 <h3 className="empty-title">{reflection.title}</h3>
-                <p className="empty-text">No reflection written yet</p>
+                <p className="empty-text">No reflection available</p>
                 <p className="empty-description">{reflection.description.substring(0, 100)}...</p>
-                <button 
-                  className="write-now-button" 
-                  style={{ borderColor: reflection.color, color: reflection.color }}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleWriteNow(reflection);
-                  }}
-                >
-                  Write Now
-                </button>
               </div>
             </div>
           )
