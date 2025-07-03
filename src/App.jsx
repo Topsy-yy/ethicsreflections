@@ -7,6 +7,8 @@ import './App.css';
 const App = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
 
   const getCardPosition = useCallback((index) => {
     if (index === currentIndex) return 'active';
@@ -53,6 +55,7 @@ const App = () => {
       }
     };
 
+    // Add event listeners
     window.addEventListener('wheel', handleWheel);
     window.addEventListener('keydown', handleKeyDown);
 
@@ -61,6 +64,32 @@ const App = () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [currentIndex, isScrolling, showCard]);
+
+  // Touch gesture handling for mobile
+  const minSwipeDistance = 50;
+
+  const handleTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientY);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientY);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isUpSwipe = distance > minSwipeDistance;
+    const isDownSwipe = distance < -minSwipeDistance;
+
+    if (isUpSwipe) {
+      showCard(currentIndex + 1);
+    } else if (isDownSwipe) {
+      showCard(currentIndex - 1);
+    }
+  };
 
   return (
     <div className="app">
@@ -77,7 +106,11 @@ const App = () => {
         onPlanetSelect={handlePlanetSelect}
       />
 
-      <div className="card-container">
+      <div className="card-container"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         {reflectionTopics.map((topic, index) => (
           <PlanetCard
             key={topic.name}

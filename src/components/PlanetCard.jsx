@@ -1,9 +1,9 @@
 import React from 'react';
 
 const PlanetCard = ({ planet, position }) => {
-  const handleReflect = () => {
-    // TODO: Open reflection editor
-    alert(`Opening reflection editor for ${planet.title}...`);
+  const handleViewReflections = () => {
+    // TODO: Open reflection viewer
+    alert(`Viewing reflections for ${planet.title}...`);
   };
 
   return (
@@ -28,13 +28,9 @@ const PlanetCard = ({ planet, position }) => {
         <p className="topic-details">{planet.description}</p>
         
         <div className="action-buttons">
-          <button className="reflect-btn" onClick={handleReflect}>
-            <span className="btn-icon">✍️</span>
-            WRITE REFLECTION
-          </button>
-          <button className="view-btn">
-            <span className="btn-icon">👁️</span>
-            VIEW NOTES
+          <button className="reflect-btn" onClick={handleViewReflections}>
+            <span className="btn-icon">📖</span>
+            VIEW REFLECTIONS
           </button>
         </div>
       </div>
