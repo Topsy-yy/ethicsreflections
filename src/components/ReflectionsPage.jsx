@@ -45,50 +45,58 @@ const ReflectionsPage = ({ onBack }) => {
 
   if (selectedUnit) {
     return (
-      <div className="reflections-page">
-        <div className="reflection-header">
-          <button className="back-button" onClick={handleBackToList}>
+      <div className="reflections-page reflection-detail-view">
+        <div className="reflection-background">
+          <div className="reflection-overlay"></div>
+        </div>
+        
+        <div className="reflection-header-minimal">
+          <button className="back-button-minimal" onClick={handleBackToList}>
             <span className="back-icon">←</span>
-            Back to Reflections
+            Back
           </button>
-          <button className="home-button" onClick={onBack}>
-            <span className="home-icon">🏠</span>
+          <button className="home-button-minimal" onClick={onBack}>
+            <span className="home-icon">⌂</span>
             Home
           </button>
         </div>
 
-        <div className="reflection-detail">
-          <div className="reflection-meta">
-            <div className="unit-badge" style={{ backgroundColor: selectedUnit.color }}>
+        <div className="reflection-card-large">
+          <div className="reflection-card-header-detail">
+            <div className="unit-badge-detail" style={{ backgroundColor: selectedUnit.color }}>
               <span className="unit-icon-detail">{selectedUnit.icon}</span>
-              <span className="unit-name">{selectedUnit.unitName}</span>
             </div>
-            <h1 className="reflection-title">{selectedUnit.title}</h1>
-            <p className="unit-description-detail">{selectedUnit.description}</p>
-            <div className="reflection-stats">
-              <span className="word-count">{selectedUnit.wordCount} words</span>
-              <span className="last-modified">Last modified: {selectedUnit.lastModified}</span>
+            <div className="reflection-title-section">
+              <h1 className="reflection-title-large">{selectedUnit.title}</h1>
+              <p className="unit-name-detail">{selectedUnit.unitName}</p>
+              <p className="reflection-description">{selectedUnit.description}</p>
             </div>
           </div>
 
-          <div className="reflection-content">
-            <div className="content-paper">
+          <div className="reflection-meta-bar">
+            <span className="word-count-detail">{selectedUnit.wordCount} words</span>
+            <span className="separator">•</span>
+            <span className="last-modified-detail">Last modified: {selectedUnit.lastModified}</span>
+          </div>
+
+          <div className="reflection-content-scrollable">
+            <div className="reflection-text">
               {selectedUnit.content.split('\n\n').map((paragraph, index) => (
-                <p key={index} className="reflection-paragraph">
+                <p key={index} className="reflection-paragraph-large">
                   {paragraph}
                 </p>
               ))}
             </div>
           </div>
 
-          <div className="reflection-actions">
-            <button className="edit-button">
+          <div className="reflection-actions-minimal">
+            <button className="action-button edit-button-minimal">
               <span className="btn-icon">✏️</span>
-              Edit Reflection
+              Edit
             </button>
-            <button className="export-button">
-              <span className="btn-icon">📄</span>
-              Export PDF
+            <button className="action-button export-button-minimal">
+              <span className="btn-icon">↗</span>
+              Export
             </button>
           </div>
         </div>
