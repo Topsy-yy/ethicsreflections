@@ -10,36 +10,36 @@ export const reflectionTopics = [
   },
   { 
     name: "UNIT 2",
-    title: "Professional Ethics",
-    text: "Examining ethical responsibilities and dilemmas in professional environments.",
-    description: "Focus on professional codes of conduct, workplace integrity, and ethical decision-making in various career contexts.",
+    title: "Freedom & Responsibility",
+    text: "Exploring the relationship between personal freedom, choice, and moral responsibility.",
+    description: "Reflect on authentic freedom, the weight of choice, and how responsibility shapes our moral identity.",
     icon: "Ⅱ",
     color: "#8b5cf6",
     reflection: "Click to write your reflection on this unit..."
   },
   { 
     name: "UNIT 3",
-    title: "Technology & Society",
-    text: "Analyzing the ethical implications of technological advancement on society.",
-    description: "Explore privacy, AI ethics, digital rights, and the responsibility of technologists in shaping our digital future.",
+    title: "Happiness & Virtues",
+    text: "Discovering the true sources of happiness through virtue, friendship, and meaningful connections.",
+    description: "Explore how genuine happiness emerges from virtuous habits, deep friendships, and the courage to resist temptation.",
     icon: "Ⅲ",
     color: "#06b6d4",
     reflection: "Click to write your reflection on this unit..."
   },
   { 
     name: "UNIT 4",
-    title: "Environmental Ethics",
-    text: "Understanding our moral obligations towards the environment and future generations.",
-    description: "Examine sustainability, climate change ethics, and our responsibility as stewards of the planet.",
+    title: "The Moral Fonts",
+    text: "Understanding the three sources of morality and how they determine the goodness of our actions.",
+    description: "Explore how object, intention, and circumstances work together to evaluate moral actions, and why all fonts must be good.",
     icon: "Ⅳ",
     color: "#10b981",
     reflection: "Click to write your reflection on this unit..."
   },
   { 
     name: "UNIT 5",
-    title: "Global Ethics",
-    text: "Exploring ethical challenges in our interconnected global society.",
-    description: "Discuss human rights, cultural relativism, global justice, and ethical responsibilities across borders.",
+    title: "Effects of Cooperation",
+    text: "Understanding how our actions and associations shape moral character and outcomes.",
+    description: "Examine the power of cooperation, the influence of companions, and our responsibility in collective actions.",
     icon: "Ⅴ",
     color: "#f59e0b",
     reflection: "Click to write your reflection on this unit..."
