@@ -1,9 +1,9 @@
 export const reflectionTopics = [
   { 
     name: "UNIT 1",
-    title: "Introduction to Ethics",
-    text: "Exploring fundamental ethical theories and their applications in modern contexts.",
-    description: "This unit introduces key ethical frameworks including deontology, consequentialism, and virtue ethics. Reflect on how these theories apply to real-world scenarios.",
+    title: "The Voluntary Act",
+    text: "Understanding the interior architecture of human freedom and the dignity of rational action.",
+    description: "Explore how voluntary acts reveal the ordered relationship between intellect and will, and why human action is rationally ordered rather than random.",
     icon: "Ⅰ",
     color: "#6366f1",
     reflection: "Click to write your reflection on this unit..."
@@ -46,11 +46,11 @@ export const reflectionTopics = [
   },
   { 
     name: "UNIT 6",
-    title: "Future Challenges",
-    text: "Anticipating and preparing for emerging ethical dilemmas of tomorrow.",
-    description: "Consider bioethics, space exploration ethics, and other frontier challenges that will shape future moral landscapes.",
+    title: "Eternal & Natural Law",
+    text: "Discovering the divine wisdom that guides creation and the inner voice of conscience.",
+    description: "Explore how Eternal Law provides cosmic order and Natural Law offers inner guidance for living with purpose and peace.",
     icon: "Ⅵ",
     color: "#ef4444",
-    reflection: "Click to write your reflection on this unit..."
+    reflection: "As I move through life's uncertainties, I'm increasingly aware of a deeper order—laws that guide not just the world around me, but the inner workings of my soul. Beyond human rules, I sense the quiet presence of Eternal Law: divine wisdom that gives all creation its purpose. Even when I feel lost or unsure, this law anchors me in the belief that life is not random, and that my journey has meaning.\n\nFlowing from this is the Natural Law—an inner voice, accessible through reason, urging me to do good and avoid evil. It's not imposed on me but discovered within. It stirs when I feel compassion, or when I wrestle with right and wrong. It doesn't silence my freedom—it refines it, guiding me to live not by impulse, but by truth.\n\nLiving in harmony with these laws isn't about rigid obedience. It's about becoming more whole aligning my will with a higher wisdom and allowing my conscience to be formed from within. In them, I find not constraint, but clarity. Not pressure, but peace.\n\nThey remind me that each choice matters—and that in seeking what is true and good, I draw closer to the One who orders all things in love."
   }
 ];
